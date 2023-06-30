@@ -1,9 +1,17 @@
 package com.example.TPCarrito.Modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 @Table(name = "usuarios")
 public class Usuario {
     @Id
@@ -22,9 +30,6 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Orden> ordenes;
-
-    public Usuario() {
-    }
 
     public Usuario(Integer id, String nombre, String username, String email, String direccion, String telefono,
                    String tipo, String password) {
@@ -93,6 +98,14 @@ public class Usuario {
 
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
+    }
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
     }
 
     @Override

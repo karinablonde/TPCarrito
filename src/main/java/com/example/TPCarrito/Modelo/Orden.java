@@ -1,10 +1,18 @@
 package com.example.TPCarrito.Modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 @Table(name = "ordenes")
 public class Orden {
     @Id
@@ -22,17 +30,26 @@ public class Orden {
     @OneToMany(mappedBy = "orden")
     private List<Detalle> detalle;
 
-    public Orden() {
-
+    public double getTotal() {
+        return total;
     }
 
-    public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total) {
-        super();
-        this.id = id;
-        this.numero = numero;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaRecibida = fechaRecibida;
-        this.total = total;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
     }
 
     public Integer getId() {
@@ -67,30 +84,8 @@ public class Orden {
         this.fechaRecibida = fechaRecibida;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
     public void setTotal(double total) {
         this.total = total;
-    }
-
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-
-    public List<Detalle> getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(List<Detalle> detalle) {
-        this.detalle = detalle;
     }
 
     @Override
