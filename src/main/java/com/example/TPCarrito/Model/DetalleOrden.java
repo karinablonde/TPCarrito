@@ -1,4 +1,4 @@
-package com.example.TPCarrito.Modelo;
+package com.example.TPCarrito.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,9 +10,8 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "detalles")
-public class Detalle {
+public class DetalleOrden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,18 +26,13 @@ public class Detalle {
     @ManyToOne
     private Producto producto;
 
-
-    public Orden getOrden() {
-        return orden;
-    }
-    public void setOrden(Orden orden) {
-        this.orden = orden;
-    }
-    public Producto getProducto() {
-        return producto;
-    }
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public DetalleOrden(Integer id, String nombre, double cantidad, double precio, double total) {
+        super();
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.total = total;
     }
 
     public Integer getId() {
@@ -79,6 +73,23 @@ public class Detalle {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     @Override

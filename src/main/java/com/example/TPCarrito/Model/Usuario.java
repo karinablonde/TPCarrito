@@ -1,4 +1,4 @@
-package com.example.TPCarrito.Modelo;
+package com.example.TPCarrito.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "usuarios")
 public class Usuario {
     @Id
@@ -98,14 +97,6 @@ public class Usuario {
 
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
-    }
-
-    public List<Orden> getOrdenes() {
-        return ordenes;
-    }
-
-    public void setOrdenes(List<Orden> ordenes) {
-        this.ordenes = ordenes;
     }
 
     @Override

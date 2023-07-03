@@ -1,4 +1,4 @@
-package com.example.TPCarrito.Modelo;
+package com.example.TPCarrito.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "ordenes")
 public class Orden {
     @Id
@@ -28,28 +27,15 @@ public class Orden {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "orden")
-    private List<Detalle> detalle;
+    private List<DetalleOrden> detalle;
 
-    public double getTotal() {
-        return total;
-    }
-
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-
-    public List<Detalle> getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(List<Detalle> detalle) {
-        this.detalle = detalle;
+    public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total) {
+        super();
+        this.id = id;
+        this.numero = numero;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaRecibida = fechaRecibida;
+        this.total = total;
     }
 
     public Integer getId() {
@@ -84,8 +70,30 @@ public class Orden {
         this.fechaRecibida = fechaRecibida;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
     public void setTotal(double total) {
         this.total = total;
+    }
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
+    public List<DetalleOrden> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<DetalleOrden> detalle) {
+        this.detalle = detalle;
     }
 
     @Override
