@@ -5,6 +5,7 @@ import com.example.TPCarrito.Model.Orden;
 import com.example.TPCarrito.Model.Producto;
 import com.example.TPCarrito.Model.Usuario;
 import com.example.TPCarrito.Service.*;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Data
 @Controller
 @RestController
 @RequestMapping("/")
 public class HomeController {
+
 
     private final Logger log = LoggerFactory.getLogger(HomeController.class);
 
@@ -144,7 +146,7 @@ public class HomeController {
     @GetMapping("/order")
     public String order(Model model, HttpSession session) {
 
-        Usuario usuario =usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         model.addAttribute("cart", detalles);
         model.addAttribute("orden", orden);
@@ -161,7 +163,7 @@ public class HomeController {
         orden.setNumero(ordenService.generarNumeroOrden());
 
         //usuario
-        Usuario usuario =usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())  ).get();
+        Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())  ).get();
 
         orden.setUsuario(usuario);
         ordenService.save(orden);
@@ -187,4 +189,11 @@ public class HomeController {
         return "usuario/home";
     }
 
+    public IUsuarioService getUsuarioService() {
+        return usuarioService;
+    }
+
+    public void setUsuarioService(IUsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 }

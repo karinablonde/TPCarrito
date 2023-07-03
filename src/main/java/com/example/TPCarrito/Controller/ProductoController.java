@@ -5,6 +5,7 @@ import com.example.TPCarrito.Model.Usuario;
 import com.example.TPCarrito.Service.IUsuarioService;
 import com.example.TPCarrito.Service.ProductoService;
 import com.example.TPCarrito.Service.UploadFileService;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
-
+@Data
 @Controller
 @RestController
 @RequestMapping("/productos")

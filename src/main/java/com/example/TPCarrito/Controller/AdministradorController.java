@@ -4,8 +4,8 @@ import com.example.TPCarrito.Model.Orden;
 import com.example.TPCarrito.Model.Producto;
 import com.example.TPCarrito.Repository.IOrdenRepository;
 import com.example.TPCarrito.Service.IOrdenService;
-import com.example.TPCarrito.Service.IUsuarioService;
 import com.example.TPCarrito.Service.ProductoService;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+@Data
 @Controller
 @RestController
 @RequestMapping("/administrador")
@@ -25,9 +25,6 @@ public class AdministradorController {
 
     @Autowired
     private ProductoService productoService;
-
-    @Autowired
-    private IUsuarioService usuarioService;
 
     @Autowired
     private IOrdenService ordensService;
